@@ -41,7 +41,7 @@ foo = c.execute(q)
 for bar in foo:
     print bar[1]
     print bar[0]
-    command4 = "INSERT INTO averages VALUES ('" + bar[0]  + "', " + bar[1] + ")" # ","  + bar[1] + "," + bar[1] + ")"
+    command4 = "INSERT INTO averages VALUES ('" + bar[0]  + "', " + str(bar[1]) + ")" # ","  + bar[1] + "," + bar[1] + ")"
     #c.execute(command4)
 
 
