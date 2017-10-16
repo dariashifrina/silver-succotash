@@ -33,13 +33,18 @@ for key in dict2:
     command2 = "INSERT INTO peeps VALUES ('" + key['name'] + "'," + key['age'] + "," +  key['id']  + ")"
     c.execute(command2)
 
+command3 = "CREATE TABLE averages(name text, id integer)"  #, id integer, marks text, average numeric)"
+c.execute(command3)
+
 q = "SELECT name, peeps.id, mark FROM peeps, courses WHERE peeps.id = courses.id"
 foo = c.execute(q)
 for bar in foo:
-    print bar[2]
+    #print bar[1]
+    #print bar[0]
+    command4 = "INSERT INTO averages VALUES ('" + bar[0]  + "', " + bar[1] + ")" # ","  + bar[1] + "," + bar[1] + ")"
+    #c.execute(command4)
 
-command3 = "CREATE TABLE averages(name text, id integer, marks text, average numeric)"
-c.execute(command3)
+
 
 #==========================================================
 db.commit() #save changes
