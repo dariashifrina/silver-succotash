@@ -1,4 +1,4 @@
-'''Daria Shifrina
+'''Daria Shifrina, Alessandro Cartegni
 SoftDev1 pd 7
 HW09 - no treble
 2017-10-15
@@ -39,8 +39,8 @@ c.execute(command3)
 q = "SELECT name, peeps.id, mark FROM peeps, courses WHERE peeps.id = courses.id"
 foo = c.execute(q)
 for bar in foo:
-    #print bar[1]
-    #print bar[0]
+    print bar[1]
+    print bar[0]
     command4 = "INSERT INTO averages VALUES ('" + bar[0]  + "', " + bar[1] + ")" # ","  + bar[1] + "," + bar[1] + ")"
     #c.execute(command4)
 
