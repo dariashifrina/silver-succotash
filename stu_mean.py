@@ -72,7 +72,10 @@ def average(student):
    # print stu, average(stu_grades[stu])
 
 for stu in stu_grades:
-    print('student name: ' +  stu  + ', id: ' + str(stu_grades[stu]['stuid'])  + ", grades: " + str(stu_grades[stu]['grades']) + ", grade average: " + str(average(stu_grades[stu])) )
+    grades = str(stu_grades[stu]['grades'])
+    grades = grades.replace("[", "")
+    grades = grades.replace("]", "")
+    print('Student Name: ' +  stu  + ', ID: ' + str(stu_grades[stu]['stuid'])  + ", Grades: " + grades + ", Grade Average: " + str(average(stu_grades[stu])) )
 
 #==========================================================
 db.commit() #save changes
