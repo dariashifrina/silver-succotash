@@ -33,18 +33,46 @@ for key in dict2:
     command2 = "INSERT INTO peeps VALUES ('" + key['name'] + "'," + key['age'] + "," +  key['id']  + ")"
     c.execute(command2)
 
-command3 = "CREATE TABLE averages(name text, id integer, marks text, average numeric)"
-c.execute(command3)
-
+#student's grades
 q = "SELECT name, peeps.id, mark FROM peeps, courses WHERE peeps.id = courses.id"
 foo = c.execute(q)
+
+#dict for grades
+stu_grades = {}
+
 for bar in foo:
-    #print bar[1]
-    #print bar[0]
-    command4 = "INSERT INTO averages VALUES ('" + bar[0]  + "', " + str(bar[1]) + ","  + str(bar[2]) + ","  + str(bar[1]) + ")"
-    c.execute(command4)
+    stu = bar[0]
+    stuid = bar[1]
+    grade = bar[2]
+    if stu in stu_grades:
+        stu_grades[stu]['grades'].append(grade)
+    else:
+        stu_grades[stu] = {}
+        stu_grades[stu]['grades'] = []
+        stu_grades[stu]['stuid'] = stuid
+        stu_grades[stu]['grades'].append(grade)
 
+#print dict
 
+#for stu in stu_grades:
+    #print stu, stu_grades[stu]['stuid'],stu_grades[stu]['grades']
+
+#grade average
+
+def average(student):
+    sum = 0
+    length = 0
+    for grade in student['grades']:
+        sum += grade
+        length += 1
+    return sum/length
+
+#testing average
+#for stu in stu_grades:
+   # print stu, average(stu_grades[stu])
+
+for stu in stu_grades:
+    print('student name: ' +  stu  + ', id: ' + str(stu_grades[stu]['stuid'])  + ", grades: " + str(stu_grades[stu]['grades']) + ", grade average: " + str(average(stu_grades[stu])) )
 
 #==========================================================
 db.commit() #save changes
