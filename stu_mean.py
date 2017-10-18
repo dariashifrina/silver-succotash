@@ -47,7 +47,7 @@ def dict_builder():
     return stu_grades
 #############################################
 def update_average(student):
-    stu_grades= dict_builder()
+    stu_grades = dict_builder()
     new_average = average(stu_grades[student])
     commandp = "UPDATE peeps_avg SET average = " + str(new_average) + " WHERE id = " + str(stu_grades[student]['stuid'])
     c.execute(commandp)
@@ -112,6 +112,8 @@ print("######################################################\nAfter inserting i
 update_courses("carpentry",56,1)
 
 update_average("kruder")
+
+stu_grades = dict_builder()
 
 print_stu_grades()
 
